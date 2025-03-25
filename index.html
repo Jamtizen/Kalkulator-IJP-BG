@@ -213,7 +213,11 @@
             );
 
             if (tarifData) {
-                let ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
+                if (jangkaWaktu > 365) {
+                    let ijp = Math.round(Math.max((jangkaWaktun/365) * nilaiJaminan * tarifData.Tarif));
+                } else {
+                    let ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
+                 }
                 let totalCharge = ijp + tarifData.BiayaAdmin + tarifData.BiayaMaterai;
 
                 document.getElementById("tarif").textContent = formatPercent(tarifData.Tarif);

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator IJP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 { background: #007bff; color: white; padding: 10px; text-align: center; border-radius: 5px; }
+        label { display: block; margin-top: 15px; }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        #hasilPerhitungan { display: none; margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulator IJP <br> Kontra Bank Garansi <br> PT Jamkrindo Semarang </h2>
+        <label>Produk:
+            <select id="produk">
+                <option>Kontra Bank Garansi</option>
+            </select>
+        </label>
+        <label>Jenis Jaminan:
+            <select id="layanan">
+                <option>Jaminan Penawaran</option>
+                <option>Jaminan Uang Muka</option>
+                <option>Jaminan Pelaksanaan</option>
+                <option>Jaminan Pemeliharaan</option>
+            </select>
+        </label>
+        <label>Bank:
+            <select id="bank">
+                <option>Bank Negara Indonesia</option>
+                <option>Bank Jateng</option>
+                <option>Bank Rakyat Indonesia</option>
+                <option>Bank Mandiri</option>
+            </select>
+        </label>
+        <label>Nilai Jaminan : <br> (Masukkan angka tanpa titik dan koma) </label>
+            <input type="text" id="nilaiJaminan" placeholder="Masukkan nilai" oninput="formatGeneral()">
+        </label>
+        <label>Nilai Jaminan (Rp):
+            <input type="text" id="nilaiJaminanRp" placeholder="Rp 0" disabled>
+        </label>
+        <label>Jangka Waktu (Hari):
+            <input type="number" id="jangkaWaktu" placeholder="Hari">
+        </label>
+        <button onclick="hitungIJP()">Hitung IJP</button>
+        <button onclick="hapusData()">Hapus</button>
+
+        <div id="hasilPerhitungan">
+            <h3>Service Charge:</h3>
+            <p>Tarif: <span id="tarif"></span></p>
+            <p>Tarif Minimal: <span id="tarifMinimal"></span></p>
+            <p>Biaya Admin: <span id="biayaAdmin"></span></p>
+            <p>Biaya Materai: <span id="biayaMaterai"></span></p>
+            <p>IJP: <span id="ijp"></span></p>
+            <p><strong>Total Charge: <span id="totalCharge"></span></strong></p>
+        </div>
+    </div>
+
+    <script>
+        function formatAccounting(number) {
+            return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(number);
+        }
+
+        function formatPercent(value) {
+            return (value * 100).toFixed(3) + "%";
+        }
+
+        function formatGeneral() {
+            let input = document.getElementById("nilaiJaminan");
+            let display = document.getElementById("nilaiJaminanRp");
+            let angka = input.value.replace(/[^0-9]/g, "");
+            display.value = angka ? formatAccounting(parseInt(angka)) : "Rp 0";
+        }
+
+        const data = [
+            {"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.0035, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.005, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.004, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.006, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.0045, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.006, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.004, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.004, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.0063, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.0125, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.0088, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.0125, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.0188, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.012, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.012, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.025, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.0056, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.0128, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.0257, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.0385, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.0513, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.0056, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.0046, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.0092, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.0138, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.0184, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+
+        ];
+
+        function hitungIJP() {
+            const produk = document.getElementById("produk").value;
+            const bank = document.getElementById("bank").value;
+            const layanan = document.getElementById("layanan").value;
+            const nilaiJaminan = parseInt(document.getElementById("nilaiJaminan").value.replace(/[^0-9]/g, ""));
+            const jangkaWaktuHari = parseInt(document.getElementById("jangkaWaktu").value);
+
+            if (isNaN(nilaiJaminan) || isNaN(jangkaWaktuHari)) {
+                alert("Harap isi semua field dengan benar!");
+                return;
+            }
+
+            const tarifData = data.find(item => 
+                item.Produk === produk &&
+                item.Bank === bank &&
+                item.Layanan === layanan &&
+                jangkaWaktuHari >= parseInt(item.JangkaWaktu.split("-")[0]) &&
+                jangkaWaktuHari <= parseInt(item.JangkaWaktu.split("-")[1])
+            );
+
+            if (tarifData) {
+                let ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
+                let totalCharge = ijp + tarifData.BiayaAdmin + tarifData.BiayaMaterai;
+
+                document.getElementById("tarif").textContent = formatPercent(tarifData.Tarif);
+                document.getElementById("tarifMinimal").textContent = formatAccounting(tarifData.TarifMinimal);
+                document.getElementById("biayaAdmin").textContent = formatAccounting(tarifData.BiayaAdmin);
+                document.getElementById("biayaMaterai").textContent = formatAccounting(tarifData.BiayaMaterai);
+                document.getElementById("ijp").textContent = formatAccounting(ijp);
+                document.getElementById("totalCharge").textContent = formatAccounting(totalCharge);
+
+                // Menampilkan hasil perhitungan setelah tombol "Hitung IJP" ditekan
+                document.getElementById("hasilPerhitungan").style.display = "block";
+            } else {
+                alert("Data tarif tidak ditemukan.");
+                document.getElementById("hasilPerhitungan").style.display = "none";
+            }
+        }
+
+        function hapusData() {
+            document.querySelectorAll("input, select").forEach(el => el.value = "");
+            document.querySelectorAll("span").forEach(el => el.textContent = "");
+            document.getElementById("hasilPerhitungan").style.display = "none"; // Menyembunyikan hasil perhitungan saat tombol hapus ditekan
+        }
+    </script>
+</body>
+</html>

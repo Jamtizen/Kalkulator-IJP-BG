@@ -22,13 +22,14 @@
             width: 400px;
         }
         h2 { background: #007bff; color: white; padding: 10px; text-align: center; border-radius: 5px; }
-        label { display: block; margin-top: 15px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
         input, select {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-weight: normal;
         }
         button {
             width: 100%;
@@ -208,6 +209,7 @@
 
                 // Menampilkan hasil perhitungan setelah tombol "Hitung IJP" ditekan
                 document.getElementById("hasilPerhitungan").style.display = "block";
+                document.getElementById("tarifMinimal").parentElement.style.display = "none";
             } else {
                 alert("Data tarif tidak ditemukan.");
                 document.getElementById("hasilPerhitungan").style.display = "none";

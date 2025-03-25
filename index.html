@@ -213,10 +213,11 @@
             );
 
             if (tarifData) {
-                if (jangkaWaktu > 365) {
-                    let ijp = Math.round((jangkaWaktuHari/365) * nilaiJaminan * tarifData.Tarif);
+		let ijp;
+                if (jangkaWaktuHari  > 365) {
+                    ijp = Math.round((jangkaWaktuHari  / 365) * tarifData.Tarif * nilaiJaminan);
                 } else {
-                    let ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
+                    ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
                  }
                 let totalCharge = ijp + tarifData.BiayaAdmin + tarifData.BiayaMaterai;
 

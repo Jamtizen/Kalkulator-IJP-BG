@@ -83,7 +83,7 @@
         <div id="hasilPerhitungan">
             <h3>Service Charge:</h3>
             <p>Tarif: <span id="tarif"></span></p>
-            <p>Tarif Minimal: <span id="tarifMinimal"></span></p>
+            <p>Tarif Minimal: <span id="tarifMinimal"></span></p> 
             <p>Biaya Admin: <span id="biayaAdmin"></span></p>
             <p>Biaya Materai: <span id="biayaMaterai"></span></p>
             <p>IJP: <span id="ijp"></span></p>
@@ -91,6 +91,7 @@
         </div>
     </div>
 
+		
     <script>
         function formatAccounting(number) {
             return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(number);
@@ -227,13 +228,17 @@
                 document.getElementById("ijp").textContent = formatAccounting(ijp);
                 document.getElementById("totalCharge").textContent = formatAccounting(totalCharge);
 
-                // Menampilkan hasil perhitungan setelah tombol "Hitung IJP" ditekan
+                // Menampilkan hasil perhitungan setelah tombol "Hitung IJP" ditekan "block" untuk menampilkan "none" untuk menyembunyikan
                 document.getElementById("hasilPerhitungan").style.display = "block";
+		document.getElementById("tarifMinimal").parentElement.style.display = "none";
             } else {
                 alert("Data tarif tidak ditemukan.");
                 document.getElementById("hasilPerhitungan").style.display = "none";
             }
         }
+
+
+			
 
         function hapusData() {
             document.querySelectorAll("input, select").forEach(el => el.value = "");

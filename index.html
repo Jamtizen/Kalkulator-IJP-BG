@@ -214,7 +214,7 @@
 
             if (tarifData) {
                 if (jangkaWaktu > 365) {
-                    let ijp = Math.round(Math.max((jangkaWaktuHari/365) * nilaiJaminan * tarifData.Tarif));
+                    let ijp = Math.round((jangkaWaktuHari/365) * nilaiJaminan * tarifData.Tarif);
                 } else {
                     let ijp = Math.round(Math.max(nilaiJaminan * tarifData.Tarif, tarifData.TarifMinimal));
                  }

@@ -49,9 +49,8 @@
     <div class="container">
         <h2>Kalkulator IJP <br> Kontra Bank Garansi <br> PT Jamkrindo Semarang </h2>
         <label>Produk:
-            <select id="produk">
-                <option>Kontra Bank Garansi </option>
-            </select>
+		<input type="text" id="Produk" name="Produk" value="Kontra Bank Garansi" disabled>
+
         </label>
         <label>Jenis Jaminan:
             <select id="layanan">
@@ -177,7 +176,10 @@
         }
 
         function hapusData() {
-            document.querySelectorAll("input, select").forEach(el => el.value = "");
+            document.querySelectorAll("input, select").forEach(el => el.value => {
+		    if (el.id !== "Bank" && el.id !==; "Produk") {
+			    el.value = "";
+		    });
             document.querySelectorAll("span").forEach(el => el.textContent = "");
             document.getElementById("hasilPerhitungan").style.display = "none"; // Menyembunyikan hasil perhitungan saat tombol hapus ditekan
         }

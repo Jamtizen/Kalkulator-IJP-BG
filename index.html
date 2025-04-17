@@ -49,7 +49,7 @@
     <div class="container">
         <h2>Kalkulator IJP <br> Kontra Bank Garansi <br> PT Jamkrindo Semarang </h2>
         <label>Produk:
-		<input type="text" id="Produk" name="Produk" value="Kontra Bank Garansi" disabled>
+		<input type="text" id="produk" name="produk" value="Kontra Bank Garansi" disabled>
 
         </label>
         <label>Jenis Jaminan:
@@ -61,7 +61,7 @@
             </select>
         </label>
         <label>Bank:
-		<input type="text" id="Bank" name="Bank" value="Bank Jateng" disabled>
+		<input type="text" id="bank" name="bank" value="Bank Jateng" disabled>
            
         </label>
         <label>Nilai Jaminan : <br> (Masukkan angka tanpa titik dan koma) </label>
@@ -176,9 +176,10 @@
         }
 
         function hapusData() {
-            document.querySelectorAll("input, select").forEach(el => el.value => {
-		    if (el.id !== "Bank" && el.id !==; "Produk") {
+            document.querySelectorAll("input, select").forEach(el => {
+		    if (el.id !== "bank" && el.id !== "produk") {
 			    el.value = "";
+			}
 		    });
             document.querySelectorAll("span").forEach(el => el.textContent = "");
             document.getElementById("hasilPerhitungan").style.display = "none"; // Menyembunyikan hasil perhitungan saat tombol hapus ditekan

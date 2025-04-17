@@ -50,7 +50,7 @@
         <h2>Kalkulator IJP <br> Kontra Bank Garansi <br> PT Jamkrindo Semarang </h2>
         <label>Produk:
             <select id="produk">
-                <option>Kontra Bank Garansi</option>
+                <option>Kontra Bank Garansi </option>
             </select>
         </label>
         <label>Jenis Jaminan:
@@ -63,10 +63,7 @@
         </label>
         <label>Bank:
             <select id="bank">
-                <option>Bank Negara Indonesia</option>
                 <option>Bank Jateng</option>
-                <option>Bank Rakyat Indonesia</option>
-                <option>Bank Mandiri</option>
             </select>
         </label>
         <label>Nilai Jaminan : <br> (Masukkan angka tanpa titik dan koma) </label>
@@ -109,86 +106,28 @@
         }
 
         const data = [
-            {"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
+            
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "0-90", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.0035, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.005, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "91-180", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.004, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.006, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.003, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "181-270", "Tarif":0.003, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.0045, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.006, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.004, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "271-365", "Tarif":0.004, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "366-1825", "Tarif":0.0045, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "366-1825", "Tarif":0.006, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "366-1825", "Tarif":0.004, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Penawaran", "JangkaWaktu": "366-1825", "Tarif":0.004, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.0063, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "0-90", "Tarif":0.006, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.01, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.0125, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "91-180", "Tarif":0.0088, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.0125, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.0188, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.012, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "181-270", "Tarif":0.012, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.025, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "271-365", "Tarif":0.015, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "366-1825", "Tarif":0.015, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "366-1825", "Tarif":0.025, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "366-1825", "Tarif":0.015, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Uang Muka", "JangkaWaktu": "366-1825", "Tarif":0.015, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.0056, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.0128, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.0257, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.0385, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.0513, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "366-1825", "Tarif":0.0513, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pelaksanaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.0056, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.0046, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "0-90", "Tarif":0.005, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.00875, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.0092, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "91-180", "Tarif":0.008, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.0138, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "181-270", "Tarif":0.01, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.0184, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "271-365", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Negara Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 150000,  "BiayaMaterai": 10000},
 {"Produk": "Kontra Bank Garansi", "Bank": "Bank Jateng", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "366-1825", "Tarif":0.0184, "TarifMinimal": 75000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Rakyat Indonesia", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 100000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
-{"Produk": "Kontra Bank Garansi", "Bank": "Bank Mandiri", "Layanan": "Jaminan Pemeliharaan", "JangkaWaktu": "366-1825", "Tarif":0.014, "TarifMinimal": 150000, "BiayaAdmin": 50000,  "BiayaMaterai": 10000},
+
 
 
         ];
